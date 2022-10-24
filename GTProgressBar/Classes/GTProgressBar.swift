@@ -13,7 +13,7 @@ public class GTProgressBar: UIView {
     private let backgroundView = NoClearView()
     private let fillView = NoClearView()
     private let progressLabel = UILabel()
-    private var _progress: CGFloat = 1
+    private var _progress: CGFloat = 0
     
     public var font: UIFont = UIFont.systemFont(ofSize: 12) {
         didSet {
@@ -132,7 +132,7 @@ public class GTProgressBar: UIView {
         }
         
         set {
-            self._progress = min(max(newValue,0), 1)
+            self._progress = min(max(newValue,self._progress), 1)
             
             self.setNeedsLayout()
             self.layoutIfNeeded()
